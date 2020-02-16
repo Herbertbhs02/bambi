@@ -1,0 +1,6 @@
+ <input type='text' name='firstName'value={this.state.firstName} placeholder='First name' onChange={this.change}/><br/>
+              <input type='text' name='secondName' value={this.state.secondName} placeholder='Second name' onChange={this.change}/><br/>
+              <input type='text' name='email' value={this.state.email} placeholder='email' onChange={this.change} /><br/>
+              <input type='password' name='password' value={this.state.pass} placeholder='Password' onChange={this.change}/><br/>
+              <input type='text' name='location' value={this.state.location} placeholder='Location' onChange={this.change}/><br/>
+              <textarea name='message' value={this.state.message} placeholder='Short message' onChange={this.change} /><br/>
