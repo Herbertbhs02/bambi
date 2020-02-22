@@ -13,11 +13,9 @@ class RegisterForm extends Component {
     submit = (e)=>{e.preventDefault();
                 this.props.submit(this.state);
                 this.setState({firstName:'',
-                              secondName:'',
-                              email:'',
-                              password:'',
-                              location:'',
-                              message:''})   
+                               email:'',
+                               password:'',
+                              })   
                                                           
                    }
 
