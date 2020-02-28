@@ -1,0 +1,31 @@
+.navbar{
+    background-color: #6495ed;
+    width:auto;
+    height:0.5%;
+    border: 1px solid #6495ed;
+    border-radius:6px
+}
+
+.login-register{
+display: flex;
+flex-direction: row-reverse;
+margin-top: 0.5%;
+margin-right: 5%
+}
+
+.register {
+    background-color:#f4a460;
+    border-radius: 7px;
+    margin-left: 1%
+}
+
+.signout {
+    background-color: #119218;
+    border-radius: 7px;
+       }
+
+button{
+    background-color: #a2add0;
+    border-radius: 7px
+}
+

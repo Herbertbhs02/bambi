@@ -13,7 +13,8 @@ class Login extends Component {
     login = (e)=>{e.preventDefault();
                 this.props.login(this.state);
                 this.setState({email:'',
-                               password:''
+                               password:'',
+                        
                               })   
                                                           
                    }
@@ -22,9 +23,8 @@ class Login extends Component {
         return (
             <div>
               <form onSubmit={this.login}>
-              <h4>Enter your login details below</h4>
-              <input type='text' name='email' value={this.state.email} placeholder='email' onChange={this.change} /><br/>
-              <input type='password' name='password' value={this.state.pass} placeholder='Password' onChange={this.change}/><br/>
+              <input type='text' name='email' value={this.state.email} placeholder='email'  onChange={this.change} /><br/>
+              <input type='password' name='password' value={this.state.pass} placeholder='Password' autoComplete='none' onChange={this.change}/><br/>
               <button>Login</button>
               </form>
             </div>

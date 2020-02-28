@@ -1,8 +1,10 @@
 .App {
   text-align: center;
 }
-
-
+ 
+body{
+  background-color:#849bab
+}
 
 /* 
 .App-header {
