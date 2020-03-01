@@ -10,6 +10,7 @@ class Connect extends Component {
       super(props)
       this.state = {
             name:'',
+            sirname:'',
             email:'' ,
             none:'',
             login:1,
@@ -20,10 +21,10 @@ class Connect extends Component {
                     }
     }
     //API to register your details on Server
-    submitToregister = (register)=>{ 
+    submitToregister = (register)=>{console.log(register)
             axios.post('http://localhost:5000/api/user/register', register)
             .then((res) => {
-                console.log(res.data.user.email)
+                console.log(res.data.user)
                
                 this.setState({email:res.data.user.email, login:1, register:0})
             }).catch((error) => {
@@ -34,7 +35,7 @@ class Connect extends Component {
 //API to login
     userLogin = (login)=>{this.setState({login:0, register:0,display1:''});
                          axios.post('http://localhost:5000/api/user/login', login)
-                         .then((res)=>{ localStorage.setItem('auth-token', res.data.token);console.log(res.data)})
+                         .then((res)=>{ localStorage.setItem('auth-token', res.data);console.log(res.data)})
                         }
            //API to search a name in the database                    
      search = (search)=>{ const headers = {
@@ -42,8 +43,8 @@ class Connect extends Component {
         'auth-token':localStorage.getItem('auth-token')
       }
          
-     axios.post('http://localhost:5000/api/search', search, {headers})
-                 .then((res)=>{this.setState({name:res.data.name,email:res.data.email});  console.log(res.data)})
+     axios.post('http://localhost:5000/api/user/searchdb', search, {headers})
+                 .then((res)=>{this.setState({name:res.data.name,sirname:res.data.sirname,email:res.data.email});  console.log(res.data)})
                         } 
       regForm = ()=>{this.setState({register:1,login:0,display:'none'})}
 

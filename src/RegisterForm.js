@@ -3,7 +3,7 @@ class RegisterForm extends Component {
     constructor(props) {
       super(props)
     
-      this.state = {firstName:'', email:'', password:''}
+      this.state = {name:'', sirname:'', email:'', password:''}
       
     }
     
@@ -11,7 +11,8 @@ class RegisterForm extends Component {
 
     submit = (e)=>{e.preventDefault();
                 this.props.submit(this.state);
-                this.setState({firstName:'',
+                this.setState({name:'',
+                              sirname:'',
                                email:'',
                                password:'',
                               })   
@@ -24,7 +25,8 @@ class RegisterForm extends Component {
               
               <form onSubmit={this.submit}>
               <h4>Enter your details and submit</h4>
-              <input type='text' name='firstName'value={this.state.firstName} placeholder='First name' onChange={this.change}/><br/>
+              <input type='text' name='name'value={this.state.name} placeholder='First name' onChange={this.change}/><br/>
+              <input type='text' name='sirname'value={this.state.sirname} placeholder='Sir name' onChange={this.change}/><br/>
               <input type='text' name='email' value={this.state.email} placeholder='email' onChange={this.change} /><br/>
               <input type='password' name='password' value={this.state.pass} placeholder='Password' autoComplete='none' onChange={this.change}/><br/>
              

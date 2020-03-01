@@ -31,13 +31,15 @@ class Search extends Component {
               <table border='1' className='search'>
               <thead>
                   <tr>
-                  <th>Name</th>
+                  <th>FirstName</th>
+                  <th>SirName</th>
                   <th>Email</th>
                   </tr>
               </thead>
                <tbody>
                 <tr>
                   <td>{this.props.table.name}</td>
+                  <td>{this.props.table.sirname}</td>
                   <td>{this.props.table.email}</td>
                 </tr>
                </tbody>  
