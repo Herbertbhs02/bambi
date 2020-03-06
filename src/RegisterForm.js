@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import './looks/registration.css'
 class RegisterForm extends Component {
     constructor(props) {
       super(props)
     
-      this.state = {name:'', sirname:'', email:'', password:''}
+      this.state = {name:'', surname:'', email:'', password:'',message:''}
       
     }
     
@@ -12,9 +13,10 @@ class RegisterForm extends Component {
     submit = (e)=>{e.preventDefault();
                 this.props.submit(this.state);
                 this.setState({name:'',
-                              sirname:'',
+                              surname:'',
                                email:'',
                                password:'',
+                               message:''
                               })   
                                                           
                    }
@@ -25,15 +27,14 @@ class RegisterForm extends Component {
               
               <form onSubmit={this.submit}>
               <h4>Enter your details and submit</h4>
-              <input type='text' name='name'value={this.state.name} placeholder='First name' onChange={this.change}/><br/>
-              <input type='text' name='sirname'value={this.state.sirname} placeholder='Sir name' onChange={this.change}/><br/>
-              <input type='text' name='email' value={this.state.email} placeholder='email' onChange={this.change} /><br/>
+              <input type='text' className='regInput' name='name'value={this.state.name.trim()} placeholder='First name' onChange={this.change}/><br/>
+              <input type='text' className='regInput' name='surname'value={this.state.surname.trim()} placeholder='Surname' onChange={this.change}/><br/>
+              <input type='text' name='email' value={this.state.email.trim()} placeholder='Email' onChange={this.change} /><br/>
               <input type='password' name='password' value={this.state.pass} placeholder='Password' autoComplete='none' onChange={this.change}/><br/>
-             
-             
+              <textarea className='textarea' rows="3" cols="25" name='message' value={this.state.message} placeholder="Leave a short message" onChange={this.change}></textarea><br/>
               <button>Submit</button>
-              
               </form>
+              {this.state.name}
             </div>
         );
     }
