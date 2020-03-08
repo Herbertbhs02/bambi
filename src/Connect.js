@@ -34,7 +34,7 @@ class Connect extends Component {
                                    }
 //API to login
     userLogin = (login)=>{this.setState({login:0, register:0,display1:''});
-                         axios.post('/api/user/login', login)
+                         axios.post('https://connectbambi.herokuapp.com/api/user/login', login)
                          .then((res)=>{ localStorage.setItem('auth-token', res.data.token);localStorage.setItem('id', res.data.id);
                          if(res.data.status===400){alert(res.data.errorMessage);this.setState({login:1})}
                          this.setState({loginName:res.data.name})})
