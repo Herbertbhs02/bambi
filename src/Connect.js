@@ -45,7 +45,7 @@ class Connect extends Component {
         'auth-token':localStorage.getItem('auth-token')
       }
          
-     axios.post('/api/user/searchdb', search, {headers})
+     axios.post('https://connectbambi.herokuapp.com/api/user/searchdb', search, {headers})
                  .then((res)=>{const resultName = res.data.map((nun)=> <div className='searchResult' key={nun._id}>{nun.name}</div>);
                                const resultSurname = res.data.map((nun)=> <div className='searchResult' key={nun._id}>{nun.surname}</div>);
                                const resultEmail = res.data.map((nun)=> <div className='searchResult' key={nun._id}>{nun.email}</div>);
@@ -62,7 +62,7 @@ class Connect extends Component {
         'auth-token':localStorage.getItem('auth-token')}
         Object.assign(messageUpdate, {id:localStorage.getItem('id')})
         
-        axios.post('/api/user/messageupdate', messageUpdate, {headers})
+        axios.post('https://connectbambi.herokuapp.com/api/user/messageupdate', messageUpdate, {headers})
       .then((res)=>{ alert(res.data)})}   
                   
     render() { //Selection of which form to render
