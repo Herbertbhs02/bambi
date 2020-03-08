@@ -6,7 +6,7 @@
 .searchResult {
     background-color:#dcdcdc;
     border-radius: 5px;
-    margin-bottom: 5px 
+    margin-bottom: 10px 
               }
 
 .loginName {
@@ -16,9 +16,24 @@
     }
 
     h4{
-        margin-bottom: 1px
+        margin-bottom: 1px;
+        margin-top: 1px
     }
 
+    @media screen and (max-width: 600px) {
+        .search {
+            margin-left: 1%;
+            
+        }
+      }
+
+      @media screen and (max-width: 600px) {
+        .searchResult {
+            margin-bottom: 70px;
+            
+            
+        }
+      }
    /* .searchInput {
         text-transform: capitalize;
       }*/

@@ -24,7 +24,7 @@ class Connect extends Component {
     }
     //API to register your details on Server
     submitToregister = (register)=>{
-            axios.post('http://localhost:5000/api/user/register', register)
+            axios.post('/api/user/register', register)
             .then((res) => { if(res.data.status===400){alert(res.data.errorMessage)};this.setState({display:''});console.log(register);
                 
                console.log(res.data.email);
@@ -34,7 +34,7 @@ class Connect extends Component {
                                    }
 //API to login
     userLogin = (login)=>{this.setState({login:0, register:0,display1:''});
-                         axios.post('http://localhost:5000/api/user/login', login)
+                         axios.post('/api/user/login', login)
                          .then((res)=>{ localStorage.setItem('auth-token', res.data.token);localStorage.setItem('id', res.data.id);
                          if(res.data.status===400){alert(res.data.errorMessage);this.setState({login:1})}
                          this.setState({loginName:res.data.name})})
@@ -45,7 +45,7 @@ class Connect extends Component {
         'auth-token':localStorage.getItem('auth-token')
       }
          
-     axios.post('http://localhost:5000/api/user/searchdb', search, {headers})
+     axios.post('/api/user/searchdb', search, {headers})
                  .then((res)=>{const resultName = res.data.map((nun)=> <div className='searchResult' key={nun._id}>{nun.name}</div>);
                                const resultSurname = res.data.map((nun)=> <div className='searchResult' key={nun._id}>{nun.surname}</div>);
                                const resultEmail = res.data.map((nun)=> <div className='searchResult' key={nun._id}>{nun.email}</div>);
@@ -62,7 +62,7 @@ class Connect extends Component {
         'auth-token':localStorage.getItem('auth-token')}
         Object.assign(messageUpdate, {id:localStorage.getItem('id')})
         
-        axios.post('http://localhost:5000/api/user/messageupdate', messageUpdate, {headers})
+        axios.post('/api/user/messageupdate', messageUpdate, {headers})
       .then((res)=>{ alert(res.data)})}   
                   
     render() { //Selection of which form to render
