@@ -34,7 +34,7 @@ class RegisterForm extends Component {
               <textarea className='textarea' rows="3" cols="25" name='message' value={this.state.message} placeholder="Leave a short message" onChange={this.change}></textarea><br/>
               <button>Submit</button>
               </form>
-              {this.state.name}
+          
             </div>
         );
     }

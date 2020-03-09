@@ -39,18 +39,24 @@ class Connect extends Component {
                          if(res.data.status===400){alert(res.data.errorMessage);this.setState({login:1})}
                          this.setState({loginName:res.data.name})})
                         }
-           //API to search a name in the database                    
+           //API to search a name in the database Note:Table is created within map()                 
      search = (search)=>{ const headers = {
         'Content-Type': 'application/json',
         'auth-token':localStorage.getItem('auth-token')
       }
          
      axios.post('https://connectbambi.herokuapp.com/api/user/searchdb', search, {headers})
-                 .then((res)=>{const resultName = res.data.map((nun)=> <div className='searchResult' key={nun._id}>{nun.name}</div>);
-                               const resultSurname = res.data.map((nun)=> <div className='searchResult' key={nun._id}>{nun.surname}</div>);
-                               const resultEmail = res.data.map((nun)=> <div className='searchResult' key={nun._id}>{nun.email}</div>);
-                               const resultMessage = res.data.map((nun)=> <div className='searchResult' key={nun._id}>{nun.message}</div>);   
-                               this.setState({name:resultName,surname:resultSurname,email:resultEmail,message:resultMessage});
+                 .then((res)=>{const searchResult = res.data.map((nun)=><table border='1'> <thead>
+                 <tr>
+                 <th>First Name</th>
+                 <th>Surname</th>
+                 <th>Email</th>
+                 <th>Message</th>
+                 </tr>
+             </thead><tbody><tr className='searchResult'><td key={nun._id}>
+                 {nun.name}</td><td>{nun.surname}</td><td>{nun.email}</td><td>{nun.message}</td></tr></tbody></table>);
+                               
+                               this.setState({name:searchResult});
                                 })
                         } 
       regForm = ()=>{this.setState({register:1,login:0,display:'none'})}

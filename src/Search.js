@@ -43,24 +43,7 @@ class Search extends Component {
               </form>
               <hr/>
                 <h4 >Search results below</h4>
-              <table border='1' className='search'>
-              <thead>
-                  <tr>
-                  <th>First Name</th>
-                  <th>Surname</th>
-                  <th>Email</th>
-                  <th>Message</th>
-                  </tr>
-              </thead>
-               <tbody>
-                <tr >
-                  <td className='tabledata'>{this.props.table.name}</td>
-                  <td className='tabledata'>{this.props.table.surname}</td>
-                  <td className='tabledata'>{this.props.table.email}</td>
-                  <td>{this.props.table.message}</td>
-                </tr>
-               </tbody>  
-             </table>
+                 {this.props.table.name}
             </div>
         );
     }
