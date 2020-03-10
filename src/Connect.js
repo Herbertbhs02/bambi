@@ -3,7 +3,8 @@ import RegisterForm from './RegisterForm';
 import Login from './Login';
 import Search from './Search';
 import axios from 'axios';
-import Navbar from './Navbar'
+import Navbar from './Navbar';
+import swal from 'sweetalert';
 
 class Connect extends Component {
     constructor(props) {
@@ -25,19 +26,17 @@ class Connect extends Component {
     //API to register your details on Server
     submitToregister = (register)=>{
             axios.post('https://connectbambi.herokuapp.com/api/user/register', register)
-            .then((res) => { if(res.data.status===400){alert(res.data.errorMessage)};this.setState({display:''});console.log(register);
-                
-               console.log(res.data.email);
-                this.setState({email:res.data.email, login:1, register:0})
-            });
+            .then((res) => { if(res.data.status===400){swal(res.data.errorMessage,"...Click OK and try again")};
+                            this.setState({email:res.data.email, login:1, register:0})
+                    });
                                 
                                    }
 //API to login
     userLogin = (login)=>{this.setState({login:0, register:0,display1:''});
                          axios.post('https://connectbambi.herokuapp.com/api/user/login', login)
                          .then((res)=>{ localStorage.setItem('auth-token', res.data.token);localStorage.setItem('id', res.data.id);
-                         if(res.data.status===400){alert(res.data.errorMessage);this.setState({login:1})}
-                         this.setState({loginName:res.data.name})})
+                         if(res.data.status===400){swal(res.data.errorMessage,"...Click OK and try again");this.setState({login:1})}
+                         this.setState({loginName:res.data.name});})
                         }
            //API to search a name in the database Note:Table is created within map()                 
      search = (search)=>{ const headers = {
@@ -69,7 +68,7 @@ class Connect extends Component {
         Object.assign(messageUpdate, {id:localStorage.getItem('id')})
         
         axios.post('https://connectbambi.herokuapp.com/api/user/messageupdate', messageUpdate, {headers})
-      .then((res)=>{ alert(res.data)})}   
+      .then((res)=>{ swal(res.data,"...Click OK")})}   
                   
     render() { //Selection of which form to render
         let display ;

@@ -4,7 +4,7 @@ import './looks/Search.css'
 class Search extends Component {
     constructor(props) {
       super(props)
-      this.state = {name:'', message:''}
+      this.state = {name:'',surname:'', message:''}
       
     }
     
@@ -33,7 +33,7 @@ class Search extends Component {
             <div >
               <form onSubmit={this.search}>
               <h4 >Welcome <span className='loginName'>{this.props.table.loginName}</span>: Type your search below</h4>
-              <input type='text' className='searchInput' name='surname' value={this.state.surname} placeholder='Type surname' onChange={this.change} /><br/>
+              <input type='text' className='searchInput' name='surname' value={this.state.surname.trim()} placeholder='Type surname' onChange={this.change} /><br/>
               <button>Search</button>
               </form>
               <form onSubmit={this.changeMessage}>
