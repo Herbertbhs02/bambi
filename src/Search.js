@@ -17,9 +17,12 @@ class Search extends Component {
                 this.props.search(this.state);
                 this.setState({
                                
-                              })   
-                                                          
-                   }
+                              })}  
+
+        listall = ()=>{
+          this.props.listall()}
+                                               
+                   
     changeMessage = (e)=>{e.preventDefault();
                     this.props.messageUpdate(this.state);
                     this.setState({
@@ -31,6 +34,7 @@ class Search extends Component {
     render() {
         return (
             <div >
+               
               <form onSubmit={this.search}>
               <h4 >Welcome <span className='loginName'>{this.props.table.loginName}</span>: Type your search below</h4>
               <input type='text' className='searchInput' name='surname' value={this.state.surname.trim()} placeholder='Type surname' onChange={this.change} /><br/>
@@ -42,6 +46,7 @@ class Search extends Component {
               <button>Update</button>
               </form>
               <hr/>
+              <button onClick={this.listall}>List all registered</button>
                 <h4 >Search results below</h4>
                  {this.props.table.name}
             </div>

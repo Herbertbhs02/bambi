@@ -58,6 +58,28 @@ class Connect extends Component {
                                this.setState({name:searchResult});
                                 })
                         } 
+                 //List all who registered
+                 listall = ()=>{ const headers = {
+                  'Content-Type': 'application/json',
+                  'auth-token':localStorage.getItem('auth-token')
+                }
+                   
+               axios.post('https://connectbambi.herokuapp.com/api/user/listall',  {headers})
+                           .then((res)=>{const allResult = res.data.map((nun)=><table border='1'> <thead>
+                           <tr>
+                           <th>First Name</th>
+                           <th>Surname</th>
+                           <th>Email</th>
+                           <th>Message</th>
+                           </tr>
+                       </thead><tbody><tr className='searchResult'><td key={nun._id}>
+                           {nun.name}</td><td>{nun.surname}</td><td>{nun.email}</td><td>{nun.message}</td></tr></tbody></table>);
+                                         
+                                         this.setState({name:allResult});
+                                          })
+                                  } 
+                 
+                 
       regForm = ()=>{this.setState({register:1,login:0,display:'none'})}
 
       logout = ()=>{this.setState({login:1,register:0,display1:'none'});localStorage.setItem('auth-token', '')}
@@ -76,14 +98,14 @@ class Connect extends Component {
           display = <Login login ={login =>this.userLogin(login)}/>
         } else if(this.state.register){
           display =  <RegisterForm submit = {register =>this.submitToregister(register)}/>
-        }else{display =  <Search search={search =>this.search(search)} messageUpdate={messageUpdate =>this.messageUpdate(messageUpdate)} table={this.state}/>}
+        }else{display =  <Search search={search =>this.search(search)} listall={this.listall} messageUpdate={messageUpdate =>this.messageUpdate(messageUpdate)} table={this.state}/>}
 
         return (
             <div>
                 <Navbar/>
                  <div className='login-register'>
                 <input className='register'type='button' style={{display:this.state.display}} value='register' onClick={this.regForm}/>
-                <input className='signout'type='button' style={{display:this.state.display1}}  value='Signout' onClick={this.logout}/>
+                <input className='signout'type='button' style={{display:this.state.display1}}  value='Logout' onClick={this.logout}/>
                 </div>
                 {display}
                 <footer>&copy; Copyright 2020 Herbert Ssevume</footer>
