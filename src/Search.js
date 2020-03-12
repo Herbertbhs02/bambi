@@ -33,11 +33,11 @@ class Search extends Component {
 
     render() {
         return (
-            <div >
+            <div>
                
               <form onSubmit={this.search}>
-              <h4 >Welcome <span className='loginName'>{this.props.table.loginName}</span>: Type your search below</h4>
-              <input type='text' className='searchInput' name='surname' value={this.state.surname.trim()} placeholder='Type surname' onChange={this.change} /><br/>
+              <h4>Welcome<span className='loginName'>{this.props.table.loginName}</span>:Type your search below</h4>
+              <input type='text' className='searchInput' name='surname' value={this.state.surname.trim()} placeholder='Type surname' onChange={this.change}/><br/>
               <button>Search</button>
               </form>
               <form onSubmit={this.changeMessage}>
@@ -47,7 +47,7 @@ class Search extends Component {
               </form>
               <hr/>
               <button onClick={this.listall}>List all registered</button>
-                <h4 >Search results below</h4>
+                <h4>Search results below</h4>
                  {this.props.table.name}
             </div>
         );

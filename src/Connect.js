@@ -5,6 +5,7 @@ import Search from './Search';
 import axios from 'axios';
 import Navbar from './Navbar';
 import swal from 'sweetalert';
+import { v4 as uuidv4 } from 'uuid';
 
 class Connect extends Component {
     constructor(props) {
@@ -39,32 +40,36 @@ class Connect extends Component {
                          this.setState({loginName:res.data.name});})
                         }
            //API to search a name in the database Note:Table is created within map()                 
-     search = (search)=>{ const headers = {
+     search = async(search)=>{ const headers = {
         'Content-Type': 'application/json',
         'auth-token':localStorage.getItem('auth-token')
       }
          
-     axios.post('https://connectbambi.herokuapp.com/api/user/searchdb', search, {headers})
-                 .then((res)=>{const searchResult = res.data.map((nun)=><table border='1'> <thead>
-                 <tr>
-                 <th>First Name</th>
-                 <th>Surname</th>
-                 <th>Email</th>
-                 <th>Message</th>
-                 </tr>
-             </thead><tbody><tr className='searchResult'><td key={nun._id}>
-                 {nun.name}</td><td>{nun.surname}</td><td>{nun.email}</td><td>{nun.message}</td></tr></tbody></table>);
-                               
-                               this.setState({name:searchResult});
-                                })
-                        } 
+      try {
+
+        const res = await axios.post('https://connectbambi.herokuapp.com/api/user/searchdb', search, {headers})
+        const searchResult = res.data.map((nun)=><table border='1'> <thead>
+        <tr>
+        <th>First Name</th>
+        <th>Surname</th>
+        <th>Email</th>
+        <th>Message</th>
+        </tr>
+    </thead><tbody><tr className='searchResult'><td key={uuidv4()}>
+        {nun.name}</td><td key={uuidv4()}>{nun.surname}</td><td key={uuidv4()}>{nun.email}</td><td key={uuidv4()}>{nun.message}</td></tr></tbody></table>);      
+         this.setState({name:searchResult});
+                       
+      } catch (error){
+        throw new Error('No response from server')
+     }
+}
                  //List all who registered
                  listall = ()=>{ const headers = {
                   'Content-Type': 'application/json',
                   'auth-token':localStorage.getItem('auth-token')
                 }
                    
-               axios.post('https://connectbambi.herokuapp.com/api/user/listall',  {headers})
+               axios.post('https://connectbambi.herokuapp.com/api/user/listall', {headers})
                            .then((res)=>{const allResult = res.data.map((nun)=><table border='1'> <thead>
                            <tr>
                            <th>First Name</th>
@@ -72,9 +77,8 @@ class Connect extends Component {
                            <th>Email</th>
                            <th>Message</th>
                            </tr>
-                       </thead><tbody><tr className='searchResult'><td key={nun._id}>
-                           {nun.name}</td><td>{nun.surname}</td><td>{nun.email}</td><td>{nun.message}</td></tr></tbody></table>);
-                                         
+                       </thead><tbody><tr className='searchResult'><td key={uuidv4()}>
+                           {nun.name}</td><td key={uuidv4()}>{nun.surname}</td><td key={uuidv4()}>{nun.email}</td><td key={uuidv4()}>{nun.message}</td></tr></tbody></table>);
                                          this.setState({name:allResult});
                                           })
                                   } 
@@ -109,7 +113,6 @@ class Connect extends Component {
                 </div>
                 {display}
                 <footer>&copy; Copyright 2020 Herbert Ssevume</footer>
-
             </div>
         );
     }
