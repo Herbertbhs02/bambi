@@ -13,7 +13,7 @@ class Search extends Component {
     message = (e)=>{this.setState({message:e.target.value})}
 
     search = (e)=>{e.preventDefault();
-                 this.setState({name:this.state.name})
+                 this.setState({name:this.state.name.trim()})
                 this.props.search(this.state);
                 this.setState({
                                
