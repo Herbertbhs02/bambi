@@ -48,15 +48,8 @@ class Connect extends Component {
       try {
 
         const res = await axios.post('https://connectbambi.herokuapp.com/api/user/searchdb', search, {headers})
-        const searchResult = res.data.map((nun)=><table border='1'> <thead>
-        <tr>
-        <th>First Name</th>
-        <th>Surname</th>
-        <th>Email</th>
-        <th>Message</th>
-        </tr>
-    </thead><tbody><tr className='searchResult'><td key={uuidv4()}>
-        {nun.name}</td><td key={uuidv4()}>{nun.surname}</td><td key={uuidv4()}>{nun.email}</td><td key={uuidv4()}>{nun.message}</td></tr></tbody></table>);      
+        const searchResult = res.data.map((nun)=><tr className='searchResult'><td key={uuidv4()}>
+        {nun.name}</td><td key={uuidv4()}>{nun.surname}</td><td key={uuidv4()}>{nun.email}</td><td key={uuidv4()}>{nun.message}</td></tr>);      
          this.setState({name:searchResult});
                        
       } catch (error){
@@ -70,15 +63,8 @@ class Connect extends Component {
                 }
                    
                axios.post('https://connectbambi.herokuapp.com/api/user/listall', {headers})
-                           .then((res)=>{const allResult = res.data.map((nun)=><table border='1'> <thead>
-                           <tr>
-                           <th>First Name</th>
-                           <th>Surname</th>
-                           <th>Email</th>
-                           <th>Message</th>
-                           </tr>
-                       </thead><tbody><tr className='searchResult'><td key={uuidv4()}>
-                           {nun.name}</td><td key={uuidv4()}>{nun.surname}</td><td key={uuidv4()}>{nun.email}</td><td key={uuidv4()}>{nun.message}</td></tr></tbody></table>);
+                           .then((res)=>{const allResult = res.data.map((nun)=><tr className='searchResult'><td key={uuidv4()}>
+                           {nun.name}</td><td key={uuidv4()}>{nun.surname}</td><td key={uuidv4()}>{nun.email}</td><td key={uuidv4()}>{nun.message}</td></tr>);
                                          this.setState({name:allResult});
                                           })
                                   } 

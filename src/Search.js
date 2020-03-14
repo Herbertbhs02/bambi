@@ -48,7 +48,19 @@ class Search extends Component {
               <hr/>
               <button onClick={this.listall}>List all registered</button>
                 <h4>Search results below</h4>
-                 {this.props.table.name}
+                <table border='1'> 
+                         <thead>
+                           <tr>
+                           <th>First Name</th>
+                           <th>Surname</th>
+                           <th>Email</th>
+                           <th>Message</th>
+                           </tr>
+                         </thead>
+                         <tbody>   
+                        {this.props.table.name}
+                         </tbody>
+                </table>
             </div>
         );
     }
