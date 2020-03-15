@@ -25,7 +25,7 @@ class Connect extends Component {
                     }
     }
     //API to register your details on Server
-    submitToregister = (register)=>{ const {confirm, ...reg} = register; console.log(register);console.log(reg);
+    submitToregister = (register)=>{ const {confirm, ...reg} = register;
             axios.post('https://connectbambi.herokuapp.com/api/user/register', reg)
             .then((res) => { if(res.data.status===400){ return swal(res.data.errorMessage,"...Click OK and try again")};
                             this.setState({email:res.data.email, login:1, register:0})
@@ -36,7 +36,7 @@ class Connect extends Component {
     userLogin = (login)=>{this.setState({login:0, register:0,display1:''});
                          axios.post('https://connectbambi.herokuapp.com/api/user/login', login)
                          .then((res)=>{ localStorage.setItem('auth-token', res.data.token);localStorage.setItem('id', res.data.id);
-                         if(res.data.status===400){swal(res.data.errorMessage,"...Click OK and try again");this.setState({login:1})}
+                         if(res.data.status===400){swal(res.data.errorMessage,"...Click OK and try again");this.setState({login:1,display:'',display1:'none'})}
                          this.setState({loginName:res.data.name});})
                         }
            //API to search a name in the database Note:Table is created within map()                 
