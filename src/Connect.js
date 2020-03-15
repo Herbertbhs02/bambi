@@ -25,9 +25,9 @@ class Connect extends Component {
                     }
     }
     //API to register your details on Server
-    submitToregister = (register)=>{
-            axios.post('https://connectbambi.herokuapp.com/api/user/register', register)
-            .then((res) => { if(res.data.status===400){swal(res.data.errorMessage,"...Click OK and try again")};
+    submitToregister = (register)=>{ const {confirm, ...reg} = register; console.log(register);console.log(reg);
+            axios.post('https://connectbambi.herokuapp.com/api/user/register', reg)
+            .then((res) => { if(res.data.status===400){ return swal(res.data.errorMessage,"...Click OK and try again")};
                             this.setState({email:res.data.email, login:1, register:0})
                     });
                                 
