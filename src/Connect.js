@@ -73,7 +73,8 @@ class Connect extends Component {
       regForm = ()=>{this.setState({register:1,login:0,display:'none'})}
 
       logout = ()=>{this.setState({login:1,register:0,display1:'none'});localStorage.setItem('auth-token', '')}
-
+      
+      //Update user message
       messageUpdate = (messageUpdate)=>{ const headers = {
         'Content-Type': 'application/json',
         'auth-token':localStorage.getItem('auth-token')}
