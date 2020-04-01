@@ -19,6 +19,18 @@
         margin-bottom: 1px;
         margin-top: 1px
     }
+/* for messages display*/
+    .messages{
+      background-color: beige;
+      padding: 5px;
+      margin: 1% 10% 2% 10%;
+     border-radius: 5px;
+      box-shadow: 4px 4px #636363 ;
+             }
+      .date{
+        margin-left:50%; 
+        margin-right:5%;
+      }       
 
     @media screen and (max-width: 600px) {
         .search {

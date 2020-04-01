@@ -21,7 +21,9 @@ class Search extends Component {
 
         listall = ()=>{
           this.props.listall()}
-                                               
+                                    
+          view = ()=>{ this.props.view({receiverId:this.props.receiverId})
+            }
                    
     changeMessage = (e)=>{e.preventDefault();
                     this.props.messageUpdate(this.state);
@@ -31,36 +33,27 @@ class Search extends Component {
                                                               
                        }               
 
+            
     render() {
+    
         return (
             <div>
-               
+               {this.props.table.post}
               <form onSubmit={this.search}>
-              <h4>Welcome<span className='loginName'>{this.props.table.loginName}</span>:Type your search below</h4>
+              <h4>Welcome<span className='loginName'> {this.props.table.loginName}</span>. Enter a name and click on search</h4>
               <input type='text' className='searchInput' name='surname' value={this.state.surname} placeholder='Type surname' onChange={this.change}/><br/>
               <button>Search</button>
               </form>
+              
               <form onSubmit={this.changeMessage}>
               <h4>Update your message</h4>
-              <textarea rows="4" cols="50" name='message' value={this.state.message} placeholder="Leave/update your message- You can only update your message" onChange={this.message}></textarea>
+              <textarea rows="2" cols="50" name='message' value={this.state.message} placeholder="Leave/update your personal message/status" onChange={this.message}></textarea>
               <button>Update</button>
               </form>
+
               <hr/>
-              <button onClick={this.listall}>List all registered</button>
-                <h4>Search results below</h4>
-                <table border='1'> 
-                         <thead>
-                           <tr>
-                           <th>First Name</th>
-                           <th>Surname</th>
-                           <th>Email</th>
-                           <th>Message</th>
-                           </tr>
-                         </thead>
-                         <tbody>   
-                        {this.props.table.name}
-                         </tbody>
-                </table>
+              <button onClick={this.listall}>List all registered</button>  <button onClick={this.view}>View your messages</button>
+              {this.props.table.name}
             </div>
         );
     }
