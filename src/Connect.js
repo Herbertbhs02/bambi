@@ -122,7 +122,7 @@ class Connect extends Component {
       //sender's message is saved to the saved server
       sendermessage = (sendermessage)=>{ 
         axios.post('https://connectbambi.herokuapp.com/api/messages/posts', sendermessage)
-        .then((res)=>{ })
+        .then((res)=>{ swal(res.data,"...Message sent")})
                                      }
 
                   //view messages left for you
