@@ -19,8 +19,8 @@ class Search extends Component {
                                
                               })}  
 
-        listall = ()=>{
-          this.props.listall()}
+       /* listall = ()=>{//<button onClick={this.listall}>List all registered</button> //temporary removed
+          this.props.listall()}*/
                                     
           view = ()=>{ this.props.view({receiverId:this.props.receiverId})
             }
@@ -52,7 +52,7 @@ class Search extends Component {
               </form>
 
               <hr/>
-              <button onClick={this.listall}>List all registered</button>  <button onClick={this.view}>View your messages</button>
+              <button onClick={this.view}>View your messages</button>
               {this.props.table.name}
             </div>
         );

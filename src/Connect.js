@@ -79,7 +79,7 @@ class Connect extends Component {
      }
 }
                  //List all who registered
-                 listall = ()=>{ const headers = {
+               /*  listall = ()=>{ const headers = {
                   'Content-Type': 'application/json',
                   'auth-token':localStorage.getItem('auth-token')
                 }
@@ -104,7 +104,7 @@ class Connect extends Component {
                                                  </table></div>)
                                          this.setState({name:element});
                                           })
-                                  } 
+                                  } */
                  
                  
       regForm = ()=>{this.setState({register:1,login:0,display:'none'})}
