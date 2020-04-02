@@ -4,7 +4,8 @@
     height:0.5%;
     border: 1px solid #6495ed;
     border-radius:6px;
-    margin:1%
+    margin:1%;
+    text-shadow:2px 1px #4a4a4a;
 }
 
 .login-register{

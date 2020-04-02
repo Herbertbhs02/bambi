@@ -9,6 +9,7 @@ import { v4 as uuidv4 } from 'uuid';
 import Posts from './Posts';
 import Delete from './Delete';
 
+
 class Connect extends Component {
     constructor(props) {
       super(props)
@@ -115,25 +116,28 @@ class Connect extends Component {
         'Content-Type': 'application/json',
         'auth-token':localStorage.getItem('auth-token')}
         Object.assign(messageUpdate, {id:localStorage.getItem('id')})
-        console.log(messageUpdate)
+        //console.log(messageUpdate)
         axios.post('https://connectbambi.herokuapp.com/api/user/messageupdate', messageUpdate, {headers})
       .then((res)=>{ swal(res.data,"...Click OK")})} 
       
       //sender's message is saved to the saved server
-      sendermessage = (sendermessage)=>{ 
-        axios.post('https://connectbambi.herokuapp.com/api/messages/posts', sendermessage)
+      sendermessage = (sendermessage)=>{ const headers = {
+        'Content-Type': 'application/json',
+        'auth-token':localStorage.getItem('auth-token')}
+                                         
+        axios.post('https://connectbambi.herokuapp.com/api/messages/posts', sendermessage,{headers})
         .then((res)=>{ swal(res.data,"...Message sent")})
                                      }
 
                   //view messages left for you
                   view = (receiverId)=>{
                     axios.post('https://connectbambi.herokuapp.com/api/retrieve', receiverId)
-                    .then((res)=>{ if(res.data.length===0){return this.setState({name:<div className='messages'>You have no messages</div>})};
-                              const result = res.data.map(item =><div className='messages' key={uuidv4()}>
-                                                                     <div><h4>{item.sendername} {item.sendersurname}</h4></div>
-                                                                     <div>{item.value}</div>
-                                                                     <div className='date'>{item.date}</div><Delete d={item._id} delete={(d)=>this.delete(d)}/>
-                                                                  </div>);
+                    .then((res)=>{if(res.data.length===0){return this.setState({name:<div className='messages'>You have no messages</div>})};
+                    const result = res.data.map(item =><div className='messages' key={uuidv4()}>
+                                                          <div><h4>{item.sendername} {item.sendersurname}</h4></div>
+                                                              <div>{item.value}</div>
+                                                              <div className='date'>{new Date(item.date).toDateString()} {new Date(item.date).toLocaleTimeString()}</div><Delete d={item._id} delete={(d)=>this.delete(d)}/>
+                                                          </div>);
                                                                    this.setState({name:result,messagedelete:res.data})      
                                 })
                   }
@@ -146,7 +150,8 @@ class Connect extends Component {
           const filteredresults = left.map(item =><div className='messages' key={uuidv4()}>
                                                       <div><h4>{item.sendername} {item.sendersurname}</h4></div>
                                                       <div>{item.value}</div>
-                                                      <div className='date'>{item.date}</div><Delete d={item._id} delete={(d)=>this.delete(d)}/>
+                                                      <div className='date'>{new Date(item.date).toDateString()} {new Date(item.date).toLocaleTimeString()}</div><Delete d={item._id} delete={(d)=>this.delete(d)}/>
+                                                      
                                                    </div>);
                                 this.setState({name:filteredresults})
                                }
