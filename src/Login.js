@@ -25,7 +25,7 @@ class Login extends Component {
               <form onSubmit={this.login}>
               <input type='text' name='email' value={this.state.email} placeholder='email'  onChange={this.change} /><br/>
               <input type='password' name='password' value={this.state.pass} placeholder='Password' autoComplete='none' onChange={this.change}/><br/>
-              <button>Login</button>
+              <button>Sign in</button>
               </form>
             </div>
         );

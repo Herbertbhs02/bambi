@@ -51,10 +51,10 @@ class Connect extends Component {
         'auth-token':localStorage.getItem('auth-token')
       }
          
-      try {
+      try { 
 
         const res = await axios.post('https://connectbambi.herokuapp.com/api/user/searchdb', search, {headers})
-        if(res.data.length===0){return this.setState({name:<div className='messages'>A person not found. Search is case sensitive </div>})};
+        if(res.data.length===0){return this.setState({name:<div className='messages'>User not found. Search is case sensitive </div>})};
         const searchResult = res.data.map((nun)=><tr className='searchResult'><td key={uuidv4()}>
         {nun.name}</td><td key={uuidv4()}>{nun.surname}</td><td key={uuidv4()}>{nun.email}</td><td key={uuidv4()}>{nun.message}</td>
         <td><Posts name={nun.name} id={nun._id} senderId={this.state.loginId} sendername={this.state.loginName} sendersurname={this.state.surname} sendermessage={sendermessage=>this.sendermessage(sendermessage)}/></td></tr>);      
@@ -129,8 +129,8 @@ class Connect extends Component {
         .then((res)=>{ swal(res.data,"...Message sent")})
                                      }
 
-                  //view messages left for you
-                  view = (receiverId)=>{
+      //view messages left for you
+        view = (receiverId)=>{
                     axios.post('https://connectbambi.herokuapp.com/api/retrieve', receiverId)
                     .then((res)=>{if(res.data.length===0){return this.setState({name:<div className='messages'>You have no messages</div>})};
                     const result = res.data.map(item =><div className='messages' key={uuidv4()}>
@@ -168,8 +168,8 @@ class Connect extends Component {
             <div>
                 <Navbar/>
                  <div className='login-register'>
-                <input className='register'type='button' style={{display:this.state.display}} value='register' onClick={this.regForm}/>
-                <input className='signout'type='button' style={{display:this.state.display1}}  value='Logout' onClick={this.logout}/>
+                <input className='register'type='button' style={{display:this.state.display}} value='Register' onClick={this.regForm}/>
+                <input className='signout'type='button' style={{display:this.state.display1}}  value='Sign out' onClick={this.logout}/>
                 </div>
                 {display}
                 <footer>&copy; Copyright 2020 Herbert Ssevume</footer>

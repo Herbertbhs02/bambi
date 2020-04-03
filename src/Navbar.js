@@ -4,7 +4,7 @@ import './looks/Navbar.css'
 const Navbar = () => {
   return (
     <div className='navbar'>
-      <h3>Connect With old Friends </h3>
+      <h3>Connect With Old Friends </h3>
     </div>
   )
 }
