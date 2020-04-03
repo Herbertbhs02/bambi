@@ -1,0 +1,17 @@
+  <form onSubmit={this.search}>
+              <h4>Welcome<span className='loginName'> {this.props.table.loginName}</span>. Enter a name and click on search</h4>
+              <input type='text' className='searchInput' name='surname'  placeholder='Type surname' onChange={this.change}/><br/>
+              <button>Search</button>
+              </form>
+
+
+
+// search = (e)=>{e.preventDefault();
+    //              this.setState({name:this.state.name.trim()})
+    //              console.log(this.state)
+    //             this.props.search(this.state);
+    //            }  
+
+
+
+//change = (e)=>{this.setState({surname:e.target.value})}
