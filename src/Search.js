@@ -36,8 +36,8 @@ class Search extends Component {
             <div>
                {this.props.table.post}
 
-              <h4>Welcome<span className='loginName'> {this.props.table.loginName}</span>. Please enter a surname. Search is case sensitive!</h4>
-              <input type='text' className='searchInput' name='surname' value={this.state.surname.trim()} placeholder='Type surname' onChange={this.search}/><br/>
+              <h4>Welcome<span className='loginName'> {this.props.table.loginName}</span>. Please enter a surname.</h4>
+              <input type='text' className='searchInput' name='surname' value={this.state.surname} placeholder='Type surname' onChange={this.search}/><br/>
 
               <form onSubmit={this.changeMessage}>
                   <h4>Update your message</h4>
