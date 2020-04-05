@@ -54,7 +54,7 @@ class Connect extends Component {
       try { 
 
         const res = await axios.post('https://connectbambi.herokuapp.com/api/user/searchdb', search, {headers})
-        if(res.data.length===0){return this.setState({name:<div className='messages'>User not found. Search is case sensitive </div>})};
+        if(res.data.length===0){return this.setState({name:<div className='messages'>User not found.</div>})};
         const searchResult = res.data.map((nun)=><tr className='searchResult'><td key={uuidv4()}>
         {nun.name}</td><td key={uuidv4()}>{nun.surname}</td><td key={uuidv4()}>{nun.email}</td><td key={uuidv4()}>{nun.message}</td>
         <td><Posts name={nun.name} id={nun._id} senderId={this.state.loginId} sendername={this.state.loginName} sendersurname={this.state.surname} sendermessage={sendermessage=>this.sendermessage(sendermessage)}/></td></tr>);      
