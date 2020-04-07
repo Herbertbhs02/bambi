@@ -113,17 +113,18 @@ class Connect extends Component {
       
       //Update user message
       messageUpdate = (messageUpdate)=>{ const headers = {
-        'Content-Type': 'application/json',
-        'auth-token':localStorage.getItem('auth-token')}
+                                                          'Content-Type': 'application/json',
+                                                          'auth-token':localStorage.getItem('auth-token')
+                                                         }
         Object.assign(messageUpdate, {id:localStorage.getItem('id')})
-        //console.log(messageUpdate)
+       
         axios.post('https://connectbambi.herokuapp.com/api/user/messageupdate', messageUpdate, {headers})
       .then((res)=>{ swal(res.data,"...Click OK")})} 
       
       //sender's message is saved to the saved server
       sendermessage = (sendermessage)=>{ const headers = {
-        'Content-Type': 'application/json',
-        'auth-token':localStorage.getItem('auth-token')}
+                                                          'Content-Type': 'application/json',
+                                                          'auth-token':localStorage.getItem('auth-token')}
                                          
         axios.post('https://connectbambi.herokuapp.com/api/messages/posts', sendermessage,{headers})
         .then((res)=>{ swal(res.data,"...Message sent")})
