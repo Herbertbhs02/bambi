@@ -10,10 +10,12 @@ body{
 
 }
 
-
-/*background-color:#849bab
- 
-   
-  background-size: auto;
-  font-size: 20px
-*/
+input{
+  width: 270px;
+  height: 30px;
+  padding: 0px 2px 0px 4px;
+  margin-top: 5px;
+  font-size: 26px;
+  border-radius: 10px
+  
+}
