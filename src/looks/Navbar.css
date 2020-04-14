@@ -34,7 +34,8 @@ button{
 .introduction{
     text-align: justify;
     padding: 6px;
-    margin:1px 1% 1px 1%
+    margin:1px 1% 1px 1%;
+    
 }
 
 .email{

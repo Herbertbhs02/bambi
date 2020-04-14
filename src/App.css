@@ -3,7 +3,16 @@
 }
  
 body{
-  background-color:#849bab
+  background-image: url(../src/Assets/air-animal.jpg);
+  background-position: center; 
+  background-attachment: fixed;
+  background-size: auto;
+  font-size: 20px
+
 }
 
 
+/*background-color:#849bab
+ 
+  
+*/
