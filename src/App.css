@@ -3,6 +3,7 @@
 }
  
 body{
+  background-color: rgb(94, 180, 238);
   background-image: url(../src/Assets/air-animal.jpg);
   background-position: center; 
   background-attachment: fixed;
@@ -18,4 +19,11 @@ input{
   font-size: 26px;
   border-radius: 10px
   
+}
+
+button{
+  width: 130px;
+  height: 35px;
+  margin-top: 5px;
+  font-size: 20px
 }

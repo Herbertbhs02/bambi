@@ -43,7 +43,7 @@ class Connect extends Component {
                          axios.post('https://connectbambi.herokuapp.com/api/user/login', login)
                          .then((res)=>{ localStorage.setItem('auth-token', res.data.token);localStorage.setItem('id', res.data.id);
                          if(res.data.status===400){swal(res.data.errorMessage,"...Click OK and try again");this.setState({login:1,display:'',display1:'none'})}
-                         this.setState({loginName:res.data.name,loginId:res.data.id,surname:res.data.surname})})
+                         this.setState({loginName:res.data.name,loginId:res.data.id,surname:res.data.surname,display:'none'})})
                         }
            //API to search a name in the database Note:Table is created within map()                 
      search = async(search)=>{ const headers = {
