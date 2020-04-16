@@ -41,12 +41,12 @@ class Search extends Component {
 
               <form onSubmit={this.changeMessage}>
                   <h4>Update your message</h4>
-                  <textarea style={{fontSize: '24px'}} rows="2" cols="50" name='message' value={this.state.message} placeholder="Leave/update your personal message/status" onChange={this.message}></textarea>
+                  <textarea className='update' rows="2" cols="50" name='message' value={this.state.message} placeholder="Leave/update your personal message/status" onChange={this.message}></textarea>
                   <button>Update</button>
               </form>
 
               <hr/>
-              <button style={{width:'230px',marginBottom:'5px'}} onClick={this.view}>View Your Messages</button>
+              <button style={{width:'230px',margin:'auto'}} onClick={this.view}>View Your Messages</button>
               {this.props.table.name}
             </div>
         );
