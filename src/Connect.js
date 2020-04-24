@@ -7,6 +7,7 @@ import Navbar from './Navbar';
 import swal from 'sweetalert';
 import { v4 as uuidv4 } from 'uuid';
 import Posts from './Posts';
+import Reply from './Reply';
 import Delete from './Delete';
 
 
@@ -42,7 +43,7 @@ class Connect extends Component {
     userLogin = (login)=>{this.setState({login:0, register:0,display1:''});
                          axios.post('https://connectbambi.herokuapp.com/api/user/login', login)
                          .then((res)=>{ localStorage.setItem('auth-token', res.data.token);localStorage.setItem('id', res.data.id);
-                         if(res.data.status===400){swal(res.data.errorMessage,"...Click OK and try again");this.setState({login:1,display:'',display1:'none'})}
+                         if(res.data.status===400){this.setState({login:1, display:'', display1:'none'}); return swal(res.data.errorMessage,"...Click OK and try again");}
                          this.setState({loginName:res.data.name,loginId:res.data.id,surname:res.data.surname,display:'none'})})
                         }
            //API to search a name in the database Note:Table is created within map()                 
@@ -109,7 +110,7 @@ class Connect extends Component {
                  
       regForm = ()=>{this.setState({register:1,login:0,display:'none'})}
 
-      logout = ()=>{this.setState({login:1,register:0,display1:'none',name:''});localStorage.setItem('auth-token', '')}
+      logout = ()=>{this.setState({login:1,register:0,display1:'none', display:'', name:''});localStorage.setItem('auth-token', '')}
       
       //Update user message
       messageUpdate = (messageUpdate)=>{ const headers = {
@@ -125,7 +126,7 @@ class Connect extends Component {
       sendermessage = (sendermessage)=>{ const headers = {
                                                           'Content-Type': 'application/json',
                                                           'auth-token':localStorage.getItem('auth-token')}
-                                         
+                                      
         axios.post('https://connectbambi.herokuapp.com/api/messages/posts', sendermessage,{headers})
         .then((res)=>{ swal(res.data,"...Message sent")})
                                      }
@@ -134,10 +135,13 @@ class Connect extends Component {
         view = (receiverId)=>{
                     axios.post('https://connectbambi.herokuapp.com/api/retrieve', receiverId)
                     .then((res)=>{if(res.data.length===0){return this.setState({name:<div className='messages'>You have no messages</div>})};
+                    console.log(res.data)
                     const result = res.data.map(item =><div className='messages' key={uuidv4()}>
                                                           <div><h4>{item.sendername} {item.sendersurname}</h4></div>
                                                               <div>{item.value}</div>
-                                                              <div className='date'>{new Date(item.date).toDateString()} {new Date(item.date).toLocaleTimeString()}</div><Delete d={item._id} delete={(d)=>this.delete(d)}/>
+                                                              <div className='date'>{new Date(item.date).toDateString()} {new Date(item.date).toLocaleTimeString()}</div>
+                                                              <Reply name={item.sendername} id={item.senderId} senderId={this.state.loginId} sendername={this.state.loginName} sendersurname={this.state.surname} sendermessage={sendermessage=>this.sendermessage(sendermessage)}/>
+                                                              <Delete d={item._id} delete={(d)=>this.delete(d)}/>
                                                           </div>);
                                                                    this.setState({name:result,messagedelete:res.data})      
                                 })
@@ -151,7 +155,9 @@ class Connect extends Component {
           const filteredresults = left.map(item =><div className='messages' key={uuidv4()}>
                                                       <div><h4>{item.sendername} {item.sendersurname}</h4></div>
                                                       <div>{item.value}</div>
-                                                      <div className='date'>{new Date(item.date).toDateString()} {new Date(item.date).toLocaleTimeString()}</div><Delete d={item._id} delete={(d)=>this.delete(d)}/>
+                                                      <div className='date'>{new Date(item.date).toDateString()} {new Date(item.date).toLocaleTimeString()}</div>
+                                                      <Reply name={item.sendername} id={item.senderId} senderId={this.state.loginId} sendername={this.state.loginName} sendersurname={this.state.surname} sendermessage={sendermessage=>this.sendermessage(sendermessage)}/>
+                                                      <Delete d={item._id} delete={(d)=>this.delete(d)}/>
                                                       
                                                    </div>);
                                 this.setState({name:filteredresults})
