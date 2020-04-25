@@ -3,14 +3,19 @@
     margin-left: 30%;
        }
 
-.searchResult {
-    background-color:#dcdcdc;
-    border-radius: 5px;
-    margin-bottom: 10px 
+.searchResult:nth-child(odd) {
+  background-color:#dcdcdc;
+  border-radius: 5px;
+  margin-bottom: 10px 
               }
 
+.searchResult:nth-child(even) {
+    background-color:#f5f5f5;
+    border-radius: 5px;
+    margin-bottom: 10px 
+                            }         
+
 .loginName {
-    
     font-family: Arial, Helvetica, sans-serif;
     color:#3d2b1f;
     background-color: #faf0e6
@@ -29,13 +34,22 @@
         margin-top: 1px
     }
 /* for messages display*/
-    .messages{
-      background-color: beige;
-      padding: 5px;
-      margin: 1% 10% 2% 10%;
-     border-radius: 5px;
-      box-shadow: 4px 4px #636363 ;
+    .messages:nth-child(odd){
+        background-color: beige;
+        padding: 5px;
+        margin: 1% 10% 2% 10%;
+        border-radius: 5px;
+        box-shadow: 4px 4px #636363 ;
              }
+
+    .messages:nth-child(even){
+          background-color: #f7efb8 ;
+          padding: 5px;
+          margin: 1% 10% 2% 10%;
+          border-radius: 5px;
+          box-shadow: 4px 4px #636363 ;
+                     }
+
       .date{
         margin-left:50%; 
         margin-right:5%;

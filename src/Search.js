@@ -41,7 +41,7 @@ class Search extends Component {
 
               <form onSubmit={this.changeMessage}>
                   <h4>Update your message</h4>
-                  <textarea className='update' rows="2" cols="50" name='message' value={this.state.message} placeholder="Leave/update your personal message/status" onChange={this.message}></textarea>
+                  <textarea className='update' rows="3" cols="50" name='message' value={this.state.message} placeholder="Leave/update your personal message/status" onChange={this.message}></textarea>
                   <button>Update</button>
               </form>
 
