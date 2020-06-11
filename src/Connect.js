@@ -79,33 +79,7 @@ class Connect extends Component {
         throw new Error('No response from server')
      }
 }
-                 //List all who registered
-               /*  listall = ()=>{ const headers = {
-                  'Content-Type': 'application/json',
-                  'auth-token':localStorage.getItem('auth-token')
-                }
-                   
-               axios.post('https://connectbambi.herokuapp.com/api/user/listall', {headers})
-                           .then((res)=>{const allResult = res.data.map((nun)=><tr className='searchResult'><td key={uuidv4()}>
-                           {nun.name}</td><td>{nun.surname}</td><td>{nun.email}</td><td>{nun.message}</td>
-                          <td><Posts name={nun.name} id={nun._id} senderId={this.state.loginId} sendermessage={sendermessage=>this.sendermessage(sendermessage)}/></td></tr>)
-                          const element = (<div><table border='1'> 
-                                                  <thead>
-                                                     <tr>
-                                                        <th>First Name</th>
-                                                        <th>Surname</th>
-                                                        <th>Email</th>
-                                                        <th>Message</th>
-                                                        <th>Send personal message</th>
-                                                     </tr>
-                                                   </thead>
-                                                   <tbody>   
-                                                    {allResult}
-                                                   </tbody>
-                                                 </table></div>)
-                                         this.setState({name:element});
-                                          })
-                                  } */
+             
                  
                  
       regForm = ()=>{this.setState({register:1,login:0,display:'none'})}

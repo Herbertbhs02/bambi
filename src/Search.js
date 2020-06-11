@@ -17,8 +17,7 @@ class Search extends Component {
                     this.setState({surname:e.target.value})
                     }  
 
-       /* listall = ()=>{//<button onClick={this.listall}>List all registered</button> //temporary removed
-          this.props.listall()}*/
+     
 
             //View messages sent to you by the registered user                        
           view = ()=>{ this.props.view({receiverId:this.props.receiverId})
@@ -36,7 +35,7 @@ class Search extends Component {
             <div>
                {this.props.table.post}
 
-              <h4>Welcome<span className='loginName'> {this.props.table.loginName}</span>. Please enter a surname.</h4>
+              <h4>Welcome<span className='loginName'> {this.props.table.loginName}</span>. Please enter a surname to search.</h4>
               <input type='text' className='searchInput' name='surname' value={this.state.surname} placeholder='Type surname' onChange={this.search}/><br/>
 
               <form onSubmit={this.changeMessage}>
