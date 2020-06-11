@@ -30,12 +30,13 @@ class Search extends Component {
 
             
     render() {
-    
+      
+            const fname = this.props.table.loginName === '' ? 'Loading': this.props.table.loginName
         return (
             <div>
                {this.props.table.post}
 
-              <h4>Welcome<span className='loginName'> {this.props.table.loginName}</span>. Please enter a surname to search.</h4>
+              <h4>Welcome<span className='loginName'> {fname}</span>. Please enter a surname to search.</h4>
               <input type='text' className='searchInput' name='surname' value={this.state.surname} placeholder='Type surname' onChange={this.search}/><br/>
 
               <form onSubmit={this.changeMessage}>
